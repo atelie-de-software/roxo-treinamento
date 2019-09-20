@@ -16,7 +16,7 @@ Dispel::Screen.open do |screen|
     y += 1 if key == :up
     y -= 1 if key == :down
 
-    output = "Hora atual #{Time.now}\n"
+    output = "Hora atual é #{Time.now}\n"
     next if key == :timeout
 
     output += "Voce pressionou a tecla #{key}\n"
