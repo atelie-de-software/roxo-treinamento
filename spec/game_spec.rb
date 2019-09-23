@@ -13,12 +13,12 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "            \n" +
-      "A            "
+      "A           "
 
     expect(game.tela).to eq tela_inicial
   end
 
-  xit 'mover para a direita' do
+  it 'mover para a direita' do
     game.direita
 
     tela_esperada =
@@ -30,7 +30,7 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "            \n" +
-      "  A          "
+      "  A         "
 
     expect(game.tela).to eq tela_esperada
   end
@@ -48,7 +48,7 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "            \n" +
-      "    A        "
+      "    A       "
 
     expect(game.tela).to eq tela_esperada
   end
@@ -67,7 +67,7 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "            \n" +
-      "  A          "
+      "  A         "
 
     expect(game.tela).to eq tela_esperada
   end
@@ -84,7 +84,7 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "            \n" +
-      "A            "
+      "A           "
 
     expect(game.tela).to eq tela_esperada
   end
@@ -102,7 +102,6 @@ RSpec.describe Game do
       "            \n" +
       "|           \n" +
       "A            "
-
     expect(game.tela).to eq tela_esperada
   end
 
@@ -119,7 +118,7 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "  |         \n" +
-      "  A          "
+      "  A         "
 
     expect(game.tela).to eq tela_esperada
   end
@@ -136,7 +135,7 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "|           \n" +
-      "A            "
+      "A           "
 
     expect(game.tela).to eq tela_esperada
 
@@ -151,7 +150,7 @@ RSpec.describe Game do
       "            \n" +
       "|           \n" +
       "            \n" +
-      "A            "
+      "A           "
 
     expect(game.tela).to eq tela_esperada
   end
