@@ -25,4 +25,13 @@ class Game
     @fim = "        "
     @nave =@inicio + "A " + @fim
   end
+
+  def esquerda
+  end
+
+  def tiro
+  end
+
+  def tick
+  end
 end

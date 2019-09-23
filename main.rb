@@ -1,25 +1,21 @@
 require 'dispel'
 require './src/game.rb'
 
-x = 0
-output = ''
-space = false
-
 # draw app and redraw after each keystroke
 Dispel::Screen.open do |screen|
+  jogo = Game.new
+  screen.draw "SpaceInv\n\n" + jogo.tela + "\n~~~~~~~~~"
+
   Dispel::Keyboard.output timeout: 0.5 do |key|
-    next unless key
+    next          unless key
 
-    exit(true) if key == :"Ctrl+c"
+    exit(true)    if key == :"Ctrl+c"
+    jogo.direita  if key == :right
+    jogo.esquerda if key == :left
+    jogo.tiro     if key == ' '
+    next          if key == :timeout
 
-    x += 1 if key == :right
-    x -= 1 if key == :left
-    space = true if key == ' '
-
-    next if key == :timeout
-
-    output = Game.new.tela
-    screen.draw output
-    space = false
+    jogo.tick
+    screen.draw "SpaceInv\n\n" + jogo.tela + "\n~~~~~~~~~"
   end
 end
