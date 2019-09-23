@@ -88,4 +88,21 @@ RSpec.describe Game do
 
     expect(game.tela).to eq tela_esperada
   end
+
+  xit 'nave da um tiro' do
+    game.tiro
+
+    tela_esperada =
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "            \n" +
+      "            \n" +
+      "|           \n" +
+      "A            "
+
+    expect(game.tela).to eq tela_esperada
+  end
 end
