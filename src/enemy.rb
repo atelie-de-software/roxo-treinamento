@@ -10,6 +10,6 @@ class Enemy
   end
 
   def show
-    'W'
+    alive? ? 'W' : ' '
   end
 end
