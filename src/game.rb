@@ -30,4 +30,13 @@ class Game
     "            \n" +
     "  A          "
   end
+
+  def esquerda
+  end
+
+  def tiro
+  end
+
+  def tick
+  end
 end
