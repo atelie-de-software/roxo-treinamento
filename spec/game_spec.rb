@@ -30,7 +30,25 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "            \n" +
-      " A           "
+      "  A          "
+
+    expect(game.tela).to eq tela_esperada
+  end
+
+  xit 'mover duas vezes para a direita' do
+    game.direita
+    game.direita
+
+    tela_esperada =
+      "w w w w w w \n" +
+      "w w w w w w \n" +
+      "w w w w w w \n" +
+      "w w w w w w \n" +
+      "w w w w w w \n" +
+      "            \n" +
+      "            \n" +
+      "            \n" +
+      "    A        "
 
     expect(game.tela).to eq tela_esperada
   end
