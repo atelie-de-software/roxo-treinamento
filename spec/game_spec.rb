@@ -154,4 +154,51 @@ RSpec.describe Game do
 
     expect(game.tela).to eq tela_esperada
   end
+
+  xit 'tiro e dois ticks' do
+    game.tiro
+
+    tela_esperada =
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "            \n" +
+      "            \n" +
+      "|           \n" +
+      "A           "
+
+    expect(game.tela).to eq tela_esperada
+
+    game.tick
+
+    tela_esperada =
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "            \n" +
+      "|           \n" +
+      "            \n" +
+      "A           "
+
+    expect(game.tela).to eq tela_esperada
+
+    game.tick
+
+    tela_esperada =
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "|           \n" +
+      "            \n" +
+      "            \n" +
+      "A           "
+
+    expect(game.tela).to eq tela_esperada
+  end
 end
