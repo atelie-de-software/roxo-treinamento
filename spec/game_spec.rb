@@ -3,13 +3,13 @@ require './src/game'
 RSpec.describe Game do
   let!(:game) { Game.new }
 
-  it 'tela inicial' do
+  xit 'tela inicial' do
     tela_inicial =
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
       "            \n" +
       "            \n" +
       "            \n" +
@@ -22,11 +22,11 @@ RSpec.describe Game do
     game.direita
 
     tela_esperada =
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
       "            \n" +
       "            \n" +
       "            \n" +
@@ -40,15 +40,34 @@ RSpec.describe Game do
     game.direita
 
     tela_esperada =
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
-      "w w w w w w \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
       "            \n" +
       "            \n" +
       "            \n" +
       "    A        "
+
+    expect(game.tela).to eq tela_esperada
+  end
+
+  xit 'mover duas vezes para a direita e uma vez para a esquerda' do
+    game.direita
+    game.direita
+    game.esquerda
+
+    tela_esperada =
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "            \n" +
+      "            \n" +
+      "            \n" +
+      "  A          "
 
     expect(game.tela).to eq tela_esperada
   end
