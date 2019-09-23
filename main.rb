@@ -24,7 +24,7 @@ Dispel::Screen.open do |screen|
     # output += "Você pressionou #{key}\n"
     # output += "x: #{x} y: #{y}\n"
 
-    output = Galaxy.new.screen
+    output = Galaxy.new(spaceship).screen
     screen.draw output
   end
 end
