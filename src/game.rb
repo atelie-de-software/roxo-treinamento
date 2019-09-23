@@ -1,4 +1,4 @@
-class Test
+class Game
   def is_truthy
     true
   end
