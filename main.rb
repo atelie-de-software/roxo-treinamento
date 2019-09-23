@@ -1,13 +1,12 @@
 require 'dispel'
-require './src/galaxy.rb'
-require './src/spaceship.rb'
+require './src/game.rb'
 
 x = 0
-y = 0
 output = ''
+space = false
+
 # draw app and redraw after each keystroke
 Dispel::Screen.open do |screen|
-  spaceship = Spaceship.new
   Dispel::Keyboard.output timeout: 0.5 do |key|
     next unless key
 
@@ -15,16 +14,12 @@ Dispel::Screen.open do |screen|
 
     x += 1 if key == :right
     x -= 1 if key == :left
-    y += 1 if key == :up
-    y -= 1 if key == :down
+    space = true if key == ' '
 
-    # output = "Hora atual #{Time.now}\n"
     next if key == :timeout
 
-    # output += "Você pressionou #{key}\n"
-    # output += "x: #{x} y: #{y}\n"
-
-    output = Galaxy.new(spaceship).screen
+    output = Game.new.tela
     screen.draw output
+    space = false
   end
 end
