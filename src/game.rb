@@ -10,24 +10,19 @@ class Game
     "w w w w     \n" +
     "            \n" +
     "            \n" +
-    "            \n" +
-    "A            "
+    "            \n"
+    @nave = "A           "
+    @inicio = 0
+    @fim = 10
   end
 
   def tela
-    @tela
+    @tela + @nave
   end
 
   def direita
-    @tela =
-    "w w w w     \n" +
-    "w w w w     \n" +
-    "w w w w     \n" +
-    "w w w w     \n" +
-    "w w w w     \n" +
-    "            \n" +
-    "            \n" +
-    "            \n" +
-    "  A          "
+    @inicio = "  "
+    @fim = "        "
+    @nave =@inicio + "A " + @fim
   end
 end
