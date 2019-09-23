@@ -242,4 +242,25 @@ RSpec.describe Game do
 
     expect(game.tela).to eq tela_esperada
   end
+
+  xit 'destroi o inimigo e anda para a direita' do
+    game.tiro
+    game.direita
+    game.tick
+    game.direita
+    game.tick
+
+    tela_esperada =
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "  w w w     \n" +
+      "            \n" +
+      "            \n" +
+      "            \n" +
+      "    A       "
+
+    expect(game.tela).to eq tela_esperada
+  end
 end
