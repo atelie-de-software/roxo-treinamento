@@ -3,7 +3,7 @@ require './src/game'
 RSpec.describe Game do
   let!(:game) { Game.new }
 
-  xit 'tela inicial' do
+  it 'tela inicial' do
     tela_inicial =
       "w w w w     \n" +
       "w w w w     \n" +
