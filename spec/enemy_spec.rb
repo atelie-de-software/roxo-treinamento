@@ -2,10 +2,22 @@ require './src/enemy'
 
 RSpec.describe Enemy do
   describe "method #show" do
-    subject { Enemy.new(true).show }
+    subject { Enemy.new(alive).show }
 
-    it "return caracter" do
-      expect(subject).to eq 'W'
+    context 'when the enemy is alive' do
+      let(:alive) { true }
+
+      it "return caracter" do
+        expect(subject).to eq 'W'
+      end
+    end
+
+    context 'when the enemy is alive' do
+      let(:alive) { false }
+
+      it "return caracter" do
+        expect(subject).to eq ' '
+      end
     end
   end
 
