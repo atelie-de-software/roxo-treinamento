@@ -14,7 +14,7 @@ class Game
   end
 
   def tela
-    @tela + desenha_linha(3) + desenha_linha(2) + desenha_linha(1) + nave
+    (1..8).to_a.reverse.map { |linha| desenha_linha(linha) }.join("\n") + "\n#{nave}"
   end
 
   def direita
@@ -38,11 +38,16 @@ class Game
   end
 
   def desenha_linha(linha)
-    return "            \n" unless @posicao_tiro_y == linha
+    return linha_base(linha) unless @posicao_tiro_y == linha
 
     inicio = ' ' * @posicao_tiro_x
     fim = ' ' * (10 - @posicao_tiro_x)
-    inicio + '| ' + fim + "\n"
+    inicio + '| ' + fim
+  end
+
+  def linha_base(linha)
+    return "            " if linha < 4
+    "w w w w     "
   end
 
   def tick
