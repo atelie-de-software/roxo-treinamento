@@ -8,7 +8,6 @@ class Game
     "w w w w     \n" +
     "w w w w     \n" +
     "w w w w     \n" +
-    "            \n" +
     "            \n"
     @posicao_nave = 0
     @posicao_tiro_x = nil
@@ -16,7 +15,7 @@ class Game
   end
 
   def tela
-    @tela + linha_1 + nave
+    @tela + linha_2 + linha_1 + nave
   end
 
   def direita
@@ -45,5 +44,17 @@ class Game
     inicio = ' ' * @posicao_tiro_x
     fim = ' ' * (10 - @posicao_tiro_x)
     inicio + '| ' + fim + "\n"
+  end
+
+  def linha_2
+    return "            \n" unless @posicao_tiro_y == 2
+
+    inicio = ' ' * @posicao_tiro_x
+    fim = ' ' * (10 - @posicao_tiro_x)
+    inicio + '| ' + fim + "\n"
+  end
+
+  def tick
+    @posicao_tiro_y += 1 if @posicao_tiro_y
   end
 end
