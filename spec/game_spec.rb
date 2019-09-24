@@ -166,6 +166,21 @@ RSpec.describe Game do
       "w w w w     \n" +
       "            \n" +
       "            \n" +
+      "            \n" +
+      "A           "
+
+    expect(game.tela).to eq tela_esperada
+
+    game.tick
+
+    tela_esperada =
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "w w w w     \n" +
+      "            \n" +
+      "            \n" +
       "|           \n" +
       "A           "
 
@@ -181,21 +196,6 @@ RSpec.describe Game do
       "w w w w     \n" +
       "            \n" +
       "|           \n" +
-      "            \n" +
-      "A           "
-
-    expect(game.tela).to eq tela_esperada
-
-    game.tick
-
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "|           \n" +
-      "            \n" +
       "            \n" +
       "A           "
 
@@ -204,6 +204,7 @@ RSpec.describe Game do
 
   xit 'tiro acertando o inimigo' do
     game.tiro
+    game.tick
     game.tick
     game.tick
     game.tick
@@ -228,6 +229,7 @@ RSpec.describe Game do
     game.tick
     game.tick
     game.tick
+    game.tick
 
     tela_esperada =
       "w w w w     \n" +
@@ -245,9 +247,12 @@ RSpec.describe Game do
 
   xit 'destroi o inimigo e anda para a direita' do
     game.tiro
+    game.tick
     game.direita
     game.tick
     game.direita
+    game.tick
+    game.tick
     game.tick
 
     tela_esperada =
@@ -266,6 +271,7 @@ RSpec.describe Game do
 
   xit 'atira e anda para a direita' do
     game.tiro
+    game.tick
     game.direita
 
     tela_esperada =
@@ -284,6 +290,7 @@ RSpec.describe Game do
 
   xit 'atira e anda para a direita' do
     game.tiro
+    game.tick
     game.direita
     game.tick
     game.tick
@@ -305,6 +312,7 @@ RSpec.describe Game do
 
   xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     game.tiro
+    game.tick
     game.tick
     game.tick
     game.tick
