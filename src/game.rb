@@ -12,8 +12,7 @@ class Game
     "            \n" +
     "            \n"
     @nave = "A           "
-    @inicio = 0
-    @fim = 10
+    @posicao_nave = 0
   end
 
   def tela
@@ -21,17 +20,9 @@ class Game
   end
 
   def direita
-    @inicio = "  "
-    @fim = "        "
-    @nave =@inicio + "A " + @fim
-  end
-
-  def esquerda
-  end
-
-  def tiro
-  end
-
-  def tick
+    @posicao_nave += 2
+    inicio = ' ' * @posicao_nave
+    fim = ' ' * (10 - @posicao_nave)
+    @nave = inicio + 'A ' + fim
   end
 end
