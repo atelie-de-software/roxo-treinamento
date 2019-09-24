@@ -25,4 +25,11 @@ class Game
     fim = ' ' * (10 - @posicao_nave)
     @nave = inicio + 'A ' + fim
   end
+
+  def esquerda
+    @posicao_nave -= 2
+    inicio = ' ' * @posicao_nave
+    fim = ' ' * (10 - @posicao_nave)
+    @nave = inicio + 'A ' + fim
+  end
 end
