@@ -34,7 +34,7 @@ class Game
 
   def tiro
     @posicao_tiro_x = @posicao_nave
-    @posicao_tiro_y = 1
+    @posicao_tiro_y = 0
   end
 
   def desenha_linha(linha)
