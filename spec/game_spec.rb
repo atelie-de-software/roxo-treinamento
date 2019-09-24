@@ -3,7 +3,7 @@ require './src/game'
 RSpec.describe Game do
   let!(:game) { Game.new }
 
-  xit 'tela inicial' do
+  it 'tela inicial' do
     tela_inicial =
       "w w w w     \n" +
       "w w w w     \n" +
@@ -18,7 +18,7 @@ RSpec.describe Game do
     expect(game.tela).to eq tela_inicial
   end
 
-  xit 'mover para a direita' do
+  it 'mover para a direita' do
     game.direita
 
     tela_esperada =
@@ -35,7 +35,7 @@ RSpec.describe Game do
     expect(game.tela).to eq tela_esperada
   end
 
-  xit 'mover duas vezes para a direita' do
+  it 'mover duas vezes para a direita' do
     game.direita
     game.direita
 
