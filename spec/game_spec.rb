@@ -100,7 +100,7 @@ RSpec.describe Game do
       "w w w w     \n" +
       "            \n" +
       "            \n" +
-      "|           \n" +
+      "            \n" +
       "A           "
     expect(game.tela).to eq tela_esperada
   end
@@ -117,7 +117,7 @@ RSpec.describe Game do
       "w w w w     \n" +
       "            \n" +
       "            \n" +
-      "  |         \n" +
+      "            \n" +
       "  A         "
 
     expect(game.tela).to eq tela_esperada
