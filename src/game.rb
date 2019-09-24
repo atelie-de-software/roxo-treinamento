@@ -2,19 +2,23 @@ class Game
   attr :tela
 
   def initialize()
-    @tela =
-    "w w w w     \n" +
-    "w w w w     \n" +
-    "w w w w     \n" +
-    "w w w w     \n" +
-    "w w w w     \n"
+    @galaxia = [
+      ['w', 'w', 'w', 'w', ' ', ' '],
+      ['w', 'w', 'w', 'w', ' ', ' '],
+      ['w', 'w', 'w', 'w', ' ', ' '],
+      ['w', 'w', 'w', 'w', ' ', ' '],
+      ['w', 'w', 'w', 'w', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ']
+    ]
     @posicao_nave = 0
     @posicao_tiro_x = nil
     @posicao_tiro_y = nil
   end
 
   def tela
-    (1..8).to_a.reverse.map { |linha| desenha_linha(linha) }.join("\n") + "\n#{nave}"
+    (0..7).map { |linha| desenha_linha(linha) }.join("\n") + "\n#{nave}"
   end
 
   def direita
@@ -34,23 +38,34 @@ class Game
 
   def tiro
     @posicao_tiro_x = @posicao_nave
-    @posicao_tiro_y = 0
+    @posicao_tiro_y = 8
   end
 
   def desenha_linha(linha)
-    return linha_base(linha) unless @posicao_tiro_y == linha
+    return linha_base(linha) if @posicao_tiro_y.nil?
 
-    inicio = ' ' * @posicao_tiro_x
-    fim = ' ' * (10 - @posicao_tiro_x)
-    inicio + '| ' + fim
+    if @galaxia[linha][@posicao_tiro_x] == 'w' && linha == @posicao_tiro_y
+      @galaxia[linha][@posicao_tiro_x] = '*'
+      @posicao_tiro_x = nil
+      @posicao_tiro_y = nil
+    elsif (@posicao_tiro_x.positive? || @posicao_tiro_x.zero?) && linha == @posicao_tiro_y
+      @galaxia[linha][@posicao_tiro_x] = '|'
+      @galaxia[linha-1][@posicao_tiro_x] = ' '
+    end
+
+    linha_base(linha)
+
+
+    # inicio = ' ' * @posicao_tiro_x
+    # fim = ' ' * (10 - @posicao_tiro_x)
+    # inicio + '| ' + fim
   end
 
   def linha_base(linha)
-    return "            " if linha < 4
-    "w w w w     "
+    @galaxia[linha].join(' ') + ' '
   end
 
   def tick
-    @posicao_tiro_y += 1 if @posicao_tiro_y
+    @posicao_tiro_y -= 1 if @posicao_tiro_y
   end
 end
