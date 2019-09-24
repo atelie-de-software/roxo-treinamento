@@ -72,7 +72,7 @@ RSpec.describe Game do
     expect(game.tela).to eq tela_esperada
   end
 
-  xit 'mover uma vez para a esquerda' do
+  it 'mover uma vez para a esquerda' do
     game.esquerda
 
     tela_esperada =
@@ -101,7 +101,7 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "|           \n" +
-      "A            "
+      "A           "
     expect(game.tela).to eq tela_esperada
   end
 
@@ -299,6 +299,28 @@ RSpec.describe Game do
       "            \n" +
       "            \n" +
       "  A         "
+
+    expect(game.tela).to eq tela_esperada
+  end
+
+  xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
+    game.tiro
+    game.tick
+    game.tick
+    game.tick
+    game.tick
+    game.tick
+
+    tela_esperada =
+      "  w w w w   \n" +
+      "  w w w w   \n" +
+      "  w w w w   \n" +
+      "  w w w w   \n" +
+      "    w w w   \n" +
+      "            \n" +
+      "            \n" +
+      "            \n" +
+      "A           "
 
     expect(game.tela).to eq tela_esperada
   end
