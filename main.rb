@@ -1,4 +1,3 @@
-require 'dispel'
 require 'ruby2d'
 require './src/game.rb'
 
