@@ -1,19 +1,27 @@
 require 'dispel'
+require 'ruby2d'
 require './src/game.rb'
 
-# draw app and redraw after each keystroke
-Dispel::Screen.open do |screen|
-  jogo = Game.new
+jogo = Game.new
+set width: 800, height: 800, background: '#000000'
 
-  Dispel::Keyboard.output timeout: 0.2 do |key|
-    jogo.tick
-    screen.draw "SpaceInv\n\n" + jogo.tela + "\n~~~~~~~~~"
+tick = 0
 
-    next          unless key
-
-    exit(true)    if key == :"Ctrl+c"
-    jogo.direita  if key == :right
-    jogo.esquerda if key == :left
-    jogo.tiro     if key == ' '
-  end
+update do
+  system "clear"
+  jogo.tick
+  tela = jogo.tela
+  puts tela
+  Image.new('images/monster.jpg', x: 0, y: 0, width: 50, height: 50)
+  Image.new('images/tiro.jpg', x: 50, y: 0, width: 50, height: 50)
+  sleep 0.2
+  tick += 1
 end
+
+on :key_down do |event|
+  jogo.direita  if event.key == 'right'
+  jogo.esquerda if event.key == 'left'
+  jogo.tiro     if event.key == 'space'
+end
+
+show
