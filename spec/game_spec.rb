@@ -53,7 +53,7 @@ RSpec.describe Game do
     expect(game.tela).to eq tela_esperada
   end
 
-  xit 'mover duas vezes para a direita e uma vez para a esquerda' do
+  it 'mover duas vezes para a direita e uma vez para a esquerda' do
     game.direita
     game.direita
     game.esquerda
