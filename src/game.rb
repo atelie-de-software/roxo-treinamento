@@ -9,13 +9,14 @@ class Game
     "w w w w     \n" +
     "w w w w     \n" +
     "            \n" +
-    "            \n" +
     "            \n"
     @posicao_nave = 0
+    @posicao_tiro_x = nil
+    @posicao_tiro_y = nil
   end
 
   def tela
-    @tela + nave
+    @tela + linha_1 + nave
   end
 
   def direita
@@ -31,5 +32,18 @@ class Game
     inicio = ' ' * @posicao_nave
     fim = ' ' * (10 - @posicao_nave)
     inicio + 'A ' + fim
+  end
+
+  def tiro
+    @posicao_tiro_x = @posicao_nave
+    @posicao_tiro_y = 1
+  end
+
+  def linha_1
+    return "            \n" unless @posicao_tiro_y == 1
+
+    inicio = ' ' * @posicao_tiro_x
+    fim = ' ' * (10 - @posicao_tiro_x)
+    inicio + '| ' + fim + "\n"
   end
 end
