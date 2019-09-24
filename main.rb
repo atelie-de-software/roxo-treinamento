@@ -6,7 +6,7 @@ Dispel::Screen.open do |screen|
   jogo = Game.new
   screen.draw "SpaceInv\n\n" + jogo.tela + "\n~~~~~~~~~"
 
-  Dispel::Keyboard.output timeout: 0.5 do |key|
+  Dispel::Keyboard.output timeout: 0.2 do |key|
     next          unless key
 
     exit(true)    if key == :"Ctrl+c"
