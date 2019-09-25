@@ -4,8 +4,16 @@ def tela(*esperada)
   expect(jogo.tela).to eq esperada.join("\n")
 end
 
-def direita
-  jogo.direita
+def direita(vezes = 1)
+  vezes.times { jogo.direita }
+end
+
+def esquerda(vezes = 1)
+  vezes.times { jogo.esquerda }
+end
+
+def tick(vezes = 1)
+  vezes.times { jogo.tick }
 end
 
 RSpec.describe Game do
@@ -24,233 +32,185 @@ RSpec.describe Game do
   end
 
   context 'move para a direita' do
-    before do
-      direita
-    end
 
     it 'mover para a direita' do
-      tela_esperada =
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "            \n" +
-        "            \n" +
-        "            \n" +
-        "  A         "
-
-      expect(jogo.tela).to eq tela_esperada
+      direita
+      tela  "w w w w     ",
+            "w w w w     ",
+            "w w w w     ",
+            "w w w w     ",
+            "w w w w     ",
+            "            ",
+            "            ",
+            "            ",
+            "  A         "
     end
 
     it 'mover duas vezes para a direita' do
-      direita
+      direita 2
 
-      tela_esperada =
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "w w w w     \n" +
-        "            \n" +
-        "            \n" +
-        "            \n" +
-        "    A       "
-
-      expect(jogo.tela).to eq tela_esperada
+      tela "w w w w     ",
+           "w w w w     ",
+           "w w w w     ",
+           "w w w w     ",
+           "w w w w     ",
+           "            ",
+           "            ",
+           "            ",
+           "    A       "
     end
   end
 
   it 'mover duas vezes para a direita e uma vez para a esquerda' do
-    jogo.direita
-    jogo.direita
-    jogo.esquerda
+    direita 2
+    esquerda
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "  A         "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "  A         "
   end
 
   it 'mover uma vez para a esquerda' do
-    jogo.esquerda
+    esquerda
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
   end
 
   it 'nave da um tiro' do
     jogo.tiro
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
   end
 
   it 'anda para a direita e da um tiro' do
-    jogo.direita
+    direita
     jogo.tiro
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "  A         "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "  A         "
   end
 
   it 'tiro e um tick' do
     jogo.tiro
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
 
-    expect(jogo.tela).to eq tela_esperada
+    tick
 
-    jogo.tick
-
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "|           \n" +
-      "A           "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "|           ",
+         "A           "
   end
 
   it 'tiro e dois ticks' do
     jogo.tiro
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
 
-    expect(jogo.tela).to eq tela_esperada
+    tick
 
-    jogo.tick
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "|           ",
+         "A           "
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "|           \n" +
-      "A           "
+    tick
 
-    expect(jogo.tela).to eq tela_esperada
-
-    jogo.tick
-
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "|           \n" +
-      "            \n" +
-      "A           "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "|           ",
+         "            ",
+         "A           "
   end
 
   it 'tiro acertando o inimigo' do
     jogo.tiro
-    jogo.tick
-    jogo.tick
-    jogo.tick
-    jogo.tick
+    tick 4
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "* w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "* w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
   end
 
-  xit 'inimigo destruido' do
+  it 'inimigo destruido' do
     jogo.tiro
-    jogo.tick
-    jogo.tick
-    jogo.tick
-    jogo.tick
-    jogo.tick
+    tick 5
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "  w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "  w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
   end
 
   xit 'destroi o inimigo e anda para a direita' do
