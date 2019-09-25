@@ -19,12 +19,6 @@ class Game
     (0..8).map { |linha| desenha_linha(linha) }.join("\n")
   end
 
-  def move(delta)
-    @galaxia[8][@posicao_nave] = ' '
-    @posicao_nave = [[@posicao_nave + delta, 0].max, 7].min
-    @galaxia[8][@posicao_nave] = 'A'
-  end
-
   def direita()  move  1 end
   def esquerda() move -1 end
 
@@ -34,18 +28,8 @@ class Game
   end
 
   def tick
-    @posicao_tiro_y -= 1 if @posicao_tiro_y.positive?
-
     limpa_galaxia
-
-    if (@posicao_tiro_x.positive? || @posicao_tiro_x.zero?) && @posicao_tiro_y.positive?
-      if @galaxia[@posicao_tiro_y][@posicao_tiro_x] == ' '
-        @galaxia[@posicao_tiro_y][@posicao_tiro_x] = '|'
-      elsif @galaxia[@posicao_tiro_y][@posicao_tiro_x] == 'w'
-        @galaxia[@posicao_tiro_y][@posicao_tiro_x] = '*'
-        limpa_tiro
-      end
-    end
+    movimenta_tiro
   end
 
   private
@@ -54,14 +38,40 @@ class Game
     @galaxia[linha].join(' ') + ' '
   end
 
+  def move(delta)
+    @galaxia[8][@posicao_nave] = ' '
+    @posicao_nave = [[@posicao_nave + delta, 0].max, 7].min
+    @galaxia[8][@posicao_nave] = 'A'
+  end
+
   def limpa_galaxia
-    (0..7).map do |linha|
-      @galaxia[linha].each_with_index do |_column, index|
-        if @galaxia[linha][index] == '*' || @galaxia[linha][index] == '|'
-          @galaxia[linha][index] = ' '
-        end
-      end
+    @galaxia = @galaxia.map do |linha|
+      linha.map { |caracter| proximo_caracter(caracter) }
     end
+  end
+
+  def proximo_caracter(caracter)
+    return ' ' if caracter == '*'
+    return ' ' if caracter == '|'
+
+    caracter
+  end
+
+  def movimenta_tiro
+    return unless @posicao_tiro_y.positive?
+
+    @posicao_tiro_y -= 1
+
+    if @galaxia[@posicao_tiro_y][@posicao_tiro_x] == ' '
+      altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '|')
+    else @galaxia[@posicao_tiro_y][@posicao_tiro_x] == 'w'
+      altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '*')
+      limpa_tiro
+    end
+  end
+
+  def altera_caracter(linha, coluna, caracter)
+    @galaxia[linha][coluna] = caracter
   end
 
   def limpa_tiro
