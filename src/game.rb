@@ -50,7 +50,8 @@ class Game
       @posicao_tiro_y = nil
     elsif (@posicao_tiro_x.positive? || @posicao_tiro_x.zero?) && linha == @posicao_tiro_y
       @galaxia[linha][@posicao_tiro_x] = '|'
-      @galaxia[linha-1][@posicao_tiro_x] = ' '
+    elsif @galaxia[linha][@posicao_tiro_x] == '|' && linha != @posicao_tiro_y
+      @galaxia[linha][@posicao_tiro_x] = ' '
     end
 
     linha_base(linha)
