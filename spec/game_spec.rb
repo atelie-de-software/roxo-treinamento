@@ -18,39 +18,42 @@ RSpec.describe Game do
     expect(jogo.tela).to eq tela_inicial
   end
 
-  it 'mover para a direita' do
-    jogo.direita
+  context 'move para a direita' do
+    before do
+      jogo.direita
+    end
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "  A         "
+    it 'mover para a direita' do
+      tela_esperada =
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "            \n" +
+        "            \n" +
+        "            \n" +
+        "  A         "
 
-    expect(jogo.tela).to eq tela_esperada
-  end
+      expect(jogo.tela).to eq tela_esperada
+    end
 
-  it 'mover duas vezes para a direita' do
-    jogo.direita
-    jogo.direita
+    it 'mover duas vezes para a direita' do
+      jogo.direita
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "    A       "
+      tela_esperada =
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "w w w w     \n" +
+        "            \n" +
+        "            \n" +
+        "            \n" +
+        "    A       "
 
-    expect(jogo.tela).to eq tela_esperada
+      expect(jogo.tela).to eq tela_esperada
+    end
   end
 
   it 'mover duas vezes para a direita e uma vez para a esquerda' do
