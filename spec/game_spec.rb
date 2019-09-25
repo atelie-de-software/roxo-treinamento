@@ -1,26 +1,31 @@
 require './src/game'
 
+def tela(*esperada)
+  expect(jogo.tela).to eq esperada.join("\n")
+end
+
+def direita
+  jogo.direita
+end
+
 RSpec.describe Game do
   let!(:jogo) { Game.new }
 
   it 'tela inicial' do
-    tela_inicial =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
-
-    expect(jogo.tela).to eq tela_inicial
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
   end
 
   context 'move para a direita' do
     before do
-      jogo.direita
+      direita
     end
 
     it 'mover para a direita' do
@@ -39,7 +44,7 @@ RSpec.describe Game do
     end
 
     it 'mover duas vezes para a direita' do
-      jogo.direita
+      direita
 
       tela_esperada =
         "w w w w     \n" +

@@ -19,18 +19,14 @@ class Game
     (0..8).map { |linha| desenha_linha(linha) }.join("\n")
   end
 
-  def direita
+  def move(delta)
     @galaxia[8][@posicao_nave] = ' '
-    @posicao_nave += 1
+    @posicao_nave = [[@posicao_nave + delta, 0].max, 7].min
     @galaxia[8][@posicao_nave] = 'A'
   end
 
-  def esquerda
-    @galaxia[8][@posicao_nave] = ' '
-    @posicao_nave -= 1
-    @posicao_nave = 0 if @posicao_nave < 0
-    @galaxia[8][@posicao_nave] = 'A'
-  end
+  def direita()  move  1 end
+  def esquerda() move -1 end
 
   def tiro
     @posicao_tiro_x = @posicao_nave
@@ -40,7 +36,7 @@ class Game
   def tick
     @posicao_tiro_y -= 1 if @posicao_tiro_y.positive?
 
-    limpa_tela
+    limpa_galaxia
 
     if (@posicao_tiro_x.positive? || @posicao_tiro_x.zero?) && @posicao_tiro_y.positive?
       if @galaxia[@posicao_tiro_y][@posicao_tiro_x] == ' '
@@ -58,7 +54,7 @@ class Game
     @galaxia[linha].join(' ') + ' '
   end
 
-  def limpa_tela
+  def limpa_galaxia
     (0..7).map do |linha|
       @galaxia[linha].each_with_index do |_column, index|
         if @galaxia[linha][index] == '*' || @galaxia[linha][index] == '|'
