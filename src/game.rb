@@ -61,10 +61,11 @@ class Game
     return unless @posicao_tiro_y.positive?
 
     @posicao_tiro_y -= 1
+    caracter_atual = @galaxia[@posicao_tiro_y][@posicao_tiro_x]
 
-    if @galaxia[@posicao_tiro_y][@posicao_tiro_x] == ' '
+    if caracter_atual == ' '
       altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '|')
-    else @galaxia[@posicao_tiro_y][@posicao_tiro_x] == 'w'
+    elsif caracter_atual == 'w'
       altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '*')
       limpa_tiro
     end
