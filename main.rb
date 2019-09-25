@@ -18,6 +18,9 @@ TELA_ALTURA = QUANTIDADE_LINHAS * SPRITE_TAMANHO
 
 COR_PLANO_FUNDO = '#000000'
 
+FPS = 5
+TEMPO_TICK = 1.0/FPS
+
 set width: TELA_LARGURA, height: TELA_ALTURA, background: COR_PLANO_FUNDO
 
 jogo = Game.new
@@ -27,21 +30,16 @@ update do
 
   tela = jogo.tela
 
-  renderizar_texto tela
   renderizar_grafico tela
+  renderizar_texto tela
 
-  sleep 0.2
+  sleep TEMPO_TICK
 end
 
 on :key_down do |event|
   jogo.direita  if event.key == 'right'
   jogo.esquerda if event.key == 'left'
   jogo.tiro     if event.key == 'space'
-end
-
-def renderizar_texto tela
-  system "clear"
-  puts tela
 end
 
 def renderizar_grafico tela
@@ -60,6 +58,11 @@ def renderiza_sprite codigo_sprite, x_index, y_index
   y_posicao = (y_index * SPRITE_TAMANHO)
 
   Image.new(caminho_sprite, x: x_posicao, y: y_posicao, width: SPRITE_TAMANHO, height: SPRITE_TAMANHO)
+end
+
+def renderizar_texto tela
+  system "clear"
+  puts tela
 end
 
 show
