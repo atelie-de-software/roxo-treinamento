@@ -2,7 +2,7 @@ require 'ruby2d'
 require './src/game.rb'
 
 jogo = Game.new
-set width: 800, height: 800, background: '#000000'
+set width: 600, height: 500, background: '#000000'
 
 sprites = {
   'w': 'images/monster.jpg',
