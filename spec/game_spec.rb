@@ -202,7 +202,7 @@ RSpec.describe Game do
     expect(game.tela).to eq tela_esperada
   end
 
-  xit 'tiro acertando o inimigo' do
+  it 'tiro acertando o inimigo' do
     game.tiro
     game.tick
     game.tick
