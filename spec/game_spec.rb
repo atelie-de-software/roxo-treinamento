@@ -303,7 +303,7 @@ RSpec.describe Game do
          "A           "
   end
 
-  it 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
+  xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
     tick 14
 
@@ -318,7 +318,7 @@ RSpec.describe Game do
          "A           "
   end
 
-  it 'mover para a direita até o limite' do
+  xit 'mover para a direita até o limite' do
     jogo.tiro
     tick 24
 
@@ -386,6 +386,7 @@ RSpec.describe Game do
   end
 
   it 'derrota quando o inimigo alcançar a linha da nave' do
+    jogo.tiro
     tick 75
 
     tela "GAMEOVER"

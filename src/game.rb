@@ -11,6 +11,7 @@ class Game
       [' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ']
     ]
+    @game_over = false
     @posicao_nave = 0
     @move_monstro = false
     @direcao_movimento_monstro = -1
@@ -21,6 +22,7 @@ class Game
   end
 
   def tela
+    return 'GAMEOVER' if perdedor?
     return 'WINNER' if vencedor?
     galaxia_render = @galaxia.map(&:dup)
     galaxia_render.last[@posicao_nave] = 'A'
@@ -37,6 +39,10 @@ class Game
 
   def vencedor?
     @galaxia.map(&:join).join.count('w').zero?
+  end
+
+  def perdedor?
+    @game_over
   end
 
   def direita()  move  1 end
@@ -123,7 +129,13 @@ class Game
 
     @conta_tick = 0
 
-    @direcao_movimento_monstro *= -1 if @conta_inverte_direcao % 2 == 0
+    if @conta_inverte_direcao % 2 == 0
+      @direcao_movimento_monstro *= -1
+      @galaxia.unshift([' ', ' ', ' ', ' ', ' ', ' '])
+      @galaxia.pop
+      @game_over = true if @galaxia.last.count('w').positive?
+    end
+
     @galaxia.each_with_index do |linha, linha_index|
       next if @galaxia.size == linha_index + 1
 
