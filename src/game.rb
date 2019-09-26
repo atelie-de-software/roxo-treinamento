@@ -25,6 +25,8 @@ class Game
   def esquerda() move -1 end
 
   def tiro
+    return if @posicao_tiro_y.positive?
+
     @posicao_tiro_x = @posicao_nave
     @posicao_tiro_y = 8
   end
