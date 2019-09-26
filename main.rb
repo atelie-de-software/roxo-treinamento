@@ -58,6 +58,8 @@ end
 
 def renderizar_grafico tela
   clear
+  return renderiza_vitoria if tela == "WINNER"
+
   linhas = tela.split("\n")
   linhas.each_with_index do |linha, y_index|
     linha.each_char.with_index do |codigo_sprite, x_index|
@@ -72,6 +74,10 @@ def renderiza_sprite codigo_sprite, x_index, y_index
   y_posicao = (y_index * SPRITE_TAMANHO)
 
   Image.new(caminho_sprite, x: x_posicao, y: y_posicao, width: SPRITE_TAMANHO, height: SPRITE_TAMANHO)
+end
+
+def renderiza_vitoria
+  Image.new(SPRITES[:WINNER], x: 0, y: 0, width: 600, height: 500)
 end
 
 def renderizar_texto tela
