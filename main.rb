@@ -28,7 +28,7 @@ background.loop = true
 background.volume = 50
 background.play
 
-tiro_audio = Sound.new('musics/tiro2.wav')
+tiro_audio = Sound.new('musics/tiro.wav')
 
 jogo = Game.new
 
