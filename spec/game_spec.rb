@@ -295,6 +295,23 @@ RSpec.describe Game do
          "A           "
   end
 
+  xit 'permite apenas um tiro enquanto não limpar a tela' do
+    jogo.tiro
+    tick 3
+    jogo.tiro
+    tick
+
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "* w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
+  end
+
   xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
     tick 10
