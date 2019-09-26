@@ -45,7 +45,7 @@ class Game
 
   def move(delta)
     @galaxia[8][@posicao_nave] = ' '
-    @posicao_nave = [[@posicao_nave + delta, 0].max, 7].min
+    @posicao_nave = [[@posicao_nave + delta, 0].max, 5].min
     @galaxia[8][@posicao_nave] = 'A'
   end
 
