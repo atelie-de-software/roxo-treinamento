@@ -21,6 +21,10 @@ class Game
     (0..8).map { |linha| desenha_linha(linha) }.join("\n")
   end
 
+  def vencedor
+    @galaxia.map(&:join).join.count('w').zero?
+  end
+
   def direita()  move  1 end
   def esquerda() move -1 end
 
@@ -87,6 +91,7 @@ class Game
 
     @galaxia.each_with_index do |linha, linha_index|
       next if @galaxia.size == linha_index + 1
+
       @galaxia[linha_index] = linha.unshift(linha.pop)
     end
   end
