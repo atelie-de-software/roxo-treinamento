@@ -21,10 +21,11 @@ class Game
   end
 
   def tela
+    return 'WINNER' if vencedor?
     (0..8).map { |linha| desenha_linha(linha) }.join("\n")
   end
 
-  def vencedor
+  def vencedor?
     @galaxia.map(&:join).join.count('w').zero?
   end
 

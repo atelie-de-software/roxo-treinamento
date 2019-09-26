@@ -377,10 +377,10 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'vitoria quando não existir inimigos' do
+  it 'vitoria quando não existir inimigos' do
     password
     jogo.tiro
-    tick 6
+    tick 9
 
     tela "WINNER"
   end
