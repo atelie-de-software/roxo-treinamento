@@ -314,7 +314,7 @@ RSpec.describe Game do
 
   xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
-    tick 10
+    tick 16
 
     tela "  w w w w   ",
          "  w w w w   ",
