@@ -371,4 +371,18 @@ RSpec.describe Game do
          "            ",
          "A           "
   end
+
+  xit 'vitoria quando não existir inimigos' do
+    jogo.vencedor
+
+    tela "            ",
+         "            ",
+         "            ",
+         "W           ",
+         "            ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
+  end
 end
