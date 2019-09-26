@@ -213,7 +213,7 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'destroi o inimigo e anda para a direita' do
+  it 'destroi o inimigo e anda para a direita' do
     jogo.tiro
     jogo.tick
     jogo.direita
@@ -237,7 +237,7 @@ RSpec.describe Game do
     expect(jogo.tela).to eq tela_esperada
   end
 
-  xit 'atira e anda para a direita' do
+  it 'atira e anda para a direita' do
     jogo.tiro
     jogo.tick
     jogo.direita
@@ -256,7 +256,7 @@ RSpec.describe Game do
     expect(jogo.tela).to eq tela_esperada
   end
 
-  xit 'atira e anda para a direita' do
+  it 'atira e anda para a direita' do
     jogo.tiro
     jogo.tick
     jogo.direita
