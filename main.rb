@@ -60,6 +60,7 @@ end
 def renderizar_grafico tela
   clear
   return renderiza_vitoria if tela == "WINNER"
+  return renderiza_derrota if tela == "GAMEOVER"
 
   linhas = tela.split("\n")
   linhas.each_with_index do |linha, y_index|
@@ -79,6 +80,10 @@ end
 
 def renderiza_vitoria
   Image.new(SPRITES[:WINNER], x: 0, y: 0, width: 600, height: 500)
+end
+
+def renderiza_vitoria
+  Image.new(SPRITES[:GAMEOVER], x: 0, y: 0, width: 600, height: 500)
 end
 
 def renderizar_texto tela
