@@ -326,4 +326,19 @@ RSpec.describe Game do
          "            ",
          "A           "
   end
+
+  xit 'mover para a direita até o limite' do
+    jogo.tiro
+    tick 26
+
+    tela "    w w w w ",
+         "    w w w w ",
+         "    w w w w ",
+         "    w w w w ",
+         "      w w w ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
+  end
 end
