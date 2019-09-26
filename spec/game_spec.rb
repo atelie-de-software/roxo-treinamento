@@ -356,4 +356,19 @@ RSpec.describe Game do
          "            ",
          "A           "
   end
+
+  xit 'move inimigos para esquerda' do
+    jogo.tiro
+    tick 56
+
+    tela "            ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "  w w w     ",
+         "            ",
+         "            ",
+         "A           "
+  end
 end
