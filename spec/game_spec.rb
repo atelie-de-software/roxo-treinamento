@@ -333,31 +333,31 @@ RSpec.describe Game do
          "A           "
   end
 
-  it 'mover para a direita até o limite' do
+  xit 'mover para a direita até o limite e descer uma linha' do
     jogo.tiro
     tick 36
 
-    tela "  w w w w   ",
+    tela "            ",
+         "  w w w w   ",
          "  w w w w   ",
          "  w w w w   ",
          "  w w w w   ",
          "    w w w   ",
          "            ",
          "            ",
-         "            ",
          "A           "
   end
 
-  it 'move inimigos para esquerda' do
+  xit 'move inimigos para esquerda na linha mesma linha que desceu' do
     jogo.tiro
     tick 46
 
-    tela "w w w w     ",
+    tela "            ",
+         "w w w w     ",
          "w w w w     ",
          "w w w w     ",
          "w w w w     ",
          "  w w w     ",
-         "            ",
          "            ",
          "            ",
          "A           "
