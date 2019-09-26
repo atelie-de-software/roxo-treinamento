@@ -278,6 +278,22 @@ RSpec.describe Game do
     expect(jogo.tela).to eq tela_esperada
   end
 
+  xit 'permite apenas um tiro por vez' do
+    jogo.tiro
+    tick 2
+    jogo.tiro
+
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "|           ",
+         "            ",
+         "A           "
+  end
+
   xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
     jogo.tick
@@ -299,21 +315,5 @@ RSpec.describe Game do
       "A           "
 
     expect(jogo.tela).to eq tela_esperada
-  end
-
-  xit 'permite apenas um tiro por vez' do
-    jogo.tiro
-    tick 2
-    jogo.tiro
-
-    tela "w w w w     ",
-         "w w w w     ",
-         "w w w w     ",
-         "w w w w     ",
-         "w w w w     ",
-         "            ",
-         "|           ",
-         "            ",
-         "A           "
   end
 end
