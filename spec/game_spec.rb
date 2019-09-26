@@ -363,6 +363,21 @@ RSpec.describe Game do
          "A           "
   end
 
+  xit 'move inimigos para direita na linha abaixo' do
+    jogo.tiro
+    tick 54
+
+    tela "            ",
+         "            ",
+         "  w w w w   ",
+         "  w w w w   ",
+         "  w w w w   ",
+         "  w w w w   ",
+         "    w w w   ",
+         "            ",
+         "A           "
+  end
+
   it 'comando de password para chegar no ultimo inimigo' do
     password
 
