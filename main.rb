@@ -25,10 +25,11 @@ set width: TELA_LARGURA, height: TELA_ALTURA, background: COR_PLANO_FUNDO
 
 background = Music.new('musics/background.midi')
 background.loop = true
-background.volume = 50
+background.volume = 30
 background.play
 
 tiro_audio = Sound.new('musics/tiro.wav')
+boom_audio = Sound.new('musics/boom.wav')
 
 jogo = Game.new
 
@@ -39,6 +40,8 @@ update do
 
   renderizar_grafico tela
   renderizar_texto tela
+
+  boom_audio.play if tela.count('*').positive?
 
   sleep TEMPO_TICK
 end
