@@ -312,7 +312,7 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
+  it 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
     tick 16
 
@@ -327,7 +327,7 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'mover para a direita até o limite' do
+  it 'mover para a direita até o limite' do
     jogo.tiro
     tick 26
 
