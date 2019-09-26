@@ -342,16 +342,16 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'descer inimigos uma linha' do
+  xit 'mover para a direita até o limite' do
     jogo.tiro
     tick 36
 
-    tela "            ",
-         "    w w w w ",
-         "    w w w w ",
-         "    w w w w ",
-         "    w w w w ",
-         "      w w w ",
+    tela "  w w w w   ",
+         "  w w w w   ",
+         "  w w w w   ",
+         "  w w w w   ",
+         "    w w w   ",
+         "            ",
          "            ",
          "            ",
          "A           "
@@ -359,14 +359,14 @@ RSpec.describe Game do
 
   xit 'move inimigos para esquerda' do
     jogo.tiro
-    tick 56
+    tick 46
 
-    tela "            ",
-         "w w w w     ",
+    tela "w w w w     ",
          "w w w w     ",
          "w w w w     ",
          "w w w w     ",
          "  w w w     ",
+         "            ",
          "            ",
          "            ",
          "A           "
