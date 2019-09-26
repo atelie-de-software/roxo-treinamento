@@ -280,8 +280,9 @@ RSpec.describe Game do
 
   xit 'permite apenas um tiro por vez' do
     jogo.tiro
-    tick 2
+    tick
     jogo.tiro
+    tick
 
     tela "w w w w     ",
          "w w w w     ",
@@ -296,12 +297,7 @@ RSpec.describe Game do
 
   xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
-    jogo.tick
-    jogo.tick
-    jogo.tick
-    jogo.tick
-    jogo.tick
-    jogo.tick
+    tick 6
 
     tela_esperada =
       "  w w w w   \n" +
