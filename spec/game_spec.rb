@@ -17,7 +17,7 @@ def tick(vezes = 1)
 end
 
 def password
-  5.times { jogo.tiro }
+  2.times { jogo.tiro }
 end
 
 RSpec.describe Game do
@@ -363,7 +363,7 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'comando de password para chegar no ultimo inimigo' do
+  it 'comando de password para chegar no ultimo inimigo' do
     password
 
     tela "w           ",

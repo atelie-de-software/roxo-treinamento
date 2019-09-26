@@ -16,6 +16,7 @@ class Game
     @direcao_movimento_monstro = -1
     @conta_inverte_direcao = 0
     @conta_tick = 0
+    @conta_tiro = 0
     limpa_tiro
   end
 
@@ -31,13 +32,32 @@ class Game
   def esquerda() move -1 end
 
   def tiro
+    easter_egg
     return if @posicao_tiro_y.positive?
 
     @posicao_tiro_x = @posicao_nave
     @posicao_tiro_y = 8
   end
 
+  def easter_egg
+    @conta_tiro += 1
+    if @conta_tiro == 2
+      @galaxia = [
+        ['w', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' '],
+        ['A', ' ', ' ', ' ', ' ', ' ']
+      ]
+    end
+  end
+
   def tick
+    @conta_tiro = 0
     movimenta_monstro
     limpa_galaxia
     movimenta_tiro
