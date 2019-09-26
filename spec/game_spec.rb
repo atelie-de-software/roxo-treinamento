@@ -297,19 +297,16 @@ RSpec.describe Game do
 
   xit 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
-    tick 6
+    tick 10
 
-    tela_esperada =
-      "  w w w w   \n" +
-      "  w w w w   \n" +
-      "  w w w w   \n" +
-      "  w w w w   \n" +
-      "    w w w   \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "A           "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "  w w w w   ",
+         "  w w w w   ",
+         "  w w w w   ",
+         "  w w w w   ",
+         "    w w w   ",
+         "            ",
+         "            ",
+         "            ",
+         "A           "
   end
 end
