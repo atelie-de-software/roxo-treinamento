@@ -16,6 +16,10 @@ def tick(vezes = 1)
   vezes.times { jogo.tick }
 end
 
+def password
+  5.times { jogo.tiro }
+end
+
 RSpec.describe Game do
   let!(:jogo) { Game.new }
 
@@ -372,17 +376,25 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'vitoria quando não existir inimigos' do
-    jogo.vencedor
+  xit 'comando de password para chegar no ultimo inimigo' do
+    password
 
-    tela "            ",
+    tela "w           ",
          "            ",
          "            ",
-         "W           ",
+         "            ",
          "            ",
          "            ",
          "            ",
          "            ",
          "A           "
+  end
+
+  xit 'vitoria quando não existir inimigos' do
+    password
+    jogo.tiro
+    tick 6
+
+    tela "WINNER"
   end
 end
