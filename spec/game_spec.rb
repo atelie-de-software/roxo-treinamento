@@ -301,4 +301,19 @@ RSpec.describe Game do
     expect(jogo.tela).to eq tela_esperada
   end
 
+  xit 'permite apenas um tiro por vez' do
+    jogo.tiro
+    tick 2
+    jogo.tiro
+
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "|           ",
+         "            ",
+         "A           "
+  end
 end
