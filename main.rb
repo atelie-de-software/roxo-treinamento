@@ -23,6 +23,13 @@ TEMPO_TICK = 1.0/FPS
 
 set width: TELA_LARGURA, height: TELA_ALTURA, background: COR_PLANO_FUNDO
 
+background = Music.new('musics/background.midi')
+background.loop = true
+background.volume = 50
+background.play
+
+tiro_audio = Sound.new('musics/tiro2.wav')
+
 jogo = Game.new
 
 update do
@@ -39,7 +46,10 @@ end
 on :key_down do |event|
   jogo.direita  if event.key == 'right'
   jogo.esquerda if event.key == 'left'
-  jogo.tiro     if event.key == 'space'
+  if event.key == 'space'
+    jogo.tiro
+    tiro_audio.play
+  end
 end
 
 def renderizar_grafico tela
