@@ -36,9 +36,9 @@ class Game
   end
 
   def tick
+    movimenta_monstro
     limpa_galaxia
     movimenta_tiro
-    movimenta_monstro
   end
 
   private
