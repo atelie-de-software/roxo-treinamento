@@ -384,4 +384,10 @@ RSpec.describe Game do
 
     tela "WINNER"
   end
+
+  it 'derrota quando o inimigo alcançar a linha da nave' do
+    tick 75
+
+    tela "GAMEOVER"
+  end
 end

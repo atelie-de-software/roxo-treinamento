@@ -2,12 +2,13 @@ require 'ruby2d'
 require './src/game.rb'
 
 SPRITES = {
-  'w':      'images/monster.jpg',
-  'A':      'images/spaceship.jpg',
-  '|':      'images/tiro.jpg',
-  ' ':      'images/background.jpg',
-  '*':      'images/explosion.jpg',
-  'WINNER': 'images/winner.png'
+  'w': 'images/monster.jpg',
+  'A': 'images/spaceship.jpg',
+  '|': 'images/tiro.jpg',
+  ' ': 'images/background.jpg',
+  '*': 'images/explosion.jpg',
+  'WINNER': 'images/winner.png',
+  'GAMEOVER': 'images/gameover.png'
 }
 
 SPRITE_TAMANHO = 50
