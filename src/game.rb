@@ -24,7 +24,15 @@ class Game
     return 'WINNER' if vencedor?
     galaxia_render = @galaxia.map(&:dup)
     galaxia_render.last[@posicao_nave] = 'A'
+    galaxia_render[@posicao_tiro_y][@posicao_tiro_x] = '|' if renderiza_tiro?
     galaxia_render.map { |linha| desenha_linha(linha) }.join("\n")
+  end
+
+  def renderiza_tiro?
+    return false if @posicao_tiro_y.negative?
+    return false if @posicao_tiro_x.negative?
+
+    @posicao_tiro_y < 8
   end
 
   def vencedor?
@@ -64,9 +72,22 @@ class Game
     movimenta_monstro
     limpa_galaxia
     movimenta_tiro
+    acerta_inimigo?
   end
 
   private
+
+  def acerta_inimigo?
+    mira = @galaxia[@posicao_tiro_y][@posicao_tiro_x]
+    if mira == 'w'
+      @galaxia[@posicao_tiro_y][@posicao_tiro_x] = '*'
+      limpa_tiro
+      @move_monstro = true
+      return true
+    end
+
+    false
+  end
 
   def desenha_linha(linha)
     linha.join(' ') + ' '
@@ -93,15 +114,6 @@ class Game
     return unless @posicao_tiro_y.positive?
 
     @posicao_tiro_y -= 1
-    caracter_atual = @galaxia[@posicao_tiro_y][@posicao_tiro_x]
-
-    if caracter_atual == ' '
-      altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '|')
-    elsif caracter_atual == 'w'
-      altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '*')
-      @move_monstro = true
-      limpa_tiro
-    end
   end
 
   def movimenta_monstro
