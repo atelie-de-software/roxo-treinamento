@@ -278,7 +278,7 @@ RSpec.describe Game do
     expect(jogo.tela).to eq tela_esperada
   end
 
-  xit 'permite apenas um tiro por vez' do
+  it 'permite apenas um tiro por vez' do
     jogo.tiro
     tick
     jogo.tiro
@@ -295,7 +295,7 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'permite apenas um tiro enquanto não limpar a tela' do
+  it 'permite apenas um tiro enquanto não limpar a tela' do
     jogo.tiro
     tick 3
     jogo.tiro
