@@ -12,6 +12,8 @@ class Game
       ['A', ' ', ' ', ' ', ' ', ' ']
     ]
     @posicao_nave = 0
+    @move_monstro = false
+    @conta_tick = 0
     limpa_tiro
   end
 
@@ -30,6 +32,7 @@ class Game
   def tick
     limpa_galaxia
     movimenta_tiro
+    movimenta_monstro
   end
 
   private
@@ -67,7 +70,22 @@ class Game
       altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '|')
     elsif caracter_atual == 'w'
       altera_caracter(@posicao_tiro_y, @posicao_tiro_x, '*')
+      @move_monstro = true
       limpa_tiro
+    end
+  end
+
+  def movimenta_monstro
+    return unless @move_monstro
+
+    @conta_tick += 1
+    return if @conta_tick < 10
+
+    @conta_tick = 0
+
+    @galaxia.each_with_index do |linha, linha_index|
+      next if @galaxia.size == linha_index + 1
+      @galaxia[linha_index] = linha.unshift(linha.pop)
     end
   end
 
