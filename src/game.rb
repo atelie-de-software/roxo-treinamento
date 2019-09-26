@@ -9,7 +9,7 @@ class Game
       [' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' '],
-      ['A', ' ', ' ', ' ', ' ', ' ']
+      [' ', ' ', ' ', ' ', ' ', ' ']
     ]
     @posicao_nave = 0
     @move_monstro = false
@@ -22,7 +22,9 @@ class Game
 
   def tela
     return 'WINNER' if vencedor?
-    @galaxia.map { |linha| desenha_linha(linha) }.join("\n")
+    galaxia_render = @galaxia.map(&:dup)
+    galaxia_render.last[@posicao_nave] = 'A'
+    galaxia_render.map { |linha| desenha_linha(linha) }.join("\n")
   end
 
   def vencedor?
@@ -71,9 +73,7 @@ class Game
   end
 
   def move(delta)
-    @galaxia[8][@posicao_nave] = ' '
     @posicao_nave = [[@posicao_nave + delta, 0].max, 5].min
-    @galaxia[8][@posicao_nave] = 'A'
   end
 
   def limpa_galaxia
