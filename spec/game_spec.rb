@@ -219,67 +219,54 @@ RSpec.describe Game do
 
   it 'destroi o inimigo e anda para a direita' do
     jogo.tiro
-    jogo.tick
-    jogo.direita
-    jogo.tick
-    jogo.direita
-    jogo.tick
-    jogo.tick
-    jogo.tick
+    tick
+    direita
+    tick
+    direita
+    tick 3
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "  w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "    A       "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "  w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "    A       "
   end
 
   it 'atira e anda para a direita' do
     jogo.tiro
-    jogo.tick
-    jogo.direita
+    tick
+    direita
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "|           \n" +
-      "  A         "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "            ",
+         "            ",
+         "|           ",
+         "  A         "
   end
 
   it 'atira e anda para a direita' do
     jogo.tiro
-    jogo.tick
-    jogo.direita
-    jogo.tick
-    jogo.tick
-    jogo.tick
+    tick
+    direita
+    tick 3
 
-    tela_esperada =
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "w w w w     \n" +
-      "* w w w     \n" +
-      "            \n" +
-      "            \n" +
-      "            \n" +
-      "  A         "
-
-    expect(jogo.tela).to eq tela_esperada
+    tela "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "w w w w     ",
+         "* w w w     ",
+         "            ",
+         "            ",
+         "            ",
+         "  A         "
   end
 
   it 'permite apenas um tiro por vez' do
