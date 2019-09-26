@@ -105,7 +105,6 @@ class Game
 
   def proximo_caracter(caracter)
     return ' ' if caracter == '*'
-    return ' ' if caracter == '|'
 
     caracter
   end
