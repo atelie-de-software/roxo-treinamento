@@ -22,7 +22,7 @@ class Game
 
   def tela
     return 'WINNER' if vencedor?
-    (0..8).map { |linha| desenha_linha(linha) }.join("\n")
+    @galaxia.map { |linha| desenha_linha(linha) }.join("\n")
   end
 
   def vencedor?
@@ -67,7 +67,7 @@ class Game
   private
 
   def desenha_linha(linha)
-    @galaxia[linha].join(' ') + ' '
+    linha.join(' ') + ' '
   end
 
   def move(delta)
