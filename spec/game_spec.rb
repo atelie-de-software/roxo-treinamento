@@ -305,7 +305,7 @@ RSpec.describe Game do
 
   it 'atira, mata o inimigo e os outros inimigos começam a se mover para a direita' do
     jogo.tiro
-    tick 16
+    tick 14
 
     tela "  w w w w   ",
          "  w w w w   ",
@@ -320,7 +320,7 @@ RSpec.describe Game do
 
   it 'mover para a direita até o limite' do
     jogo.tiro
-    tick 26
+    tick 24
 
     tela "    w w w w ",
          "    w w w w ",
@@ -335,7 +335,7 @@ RSpec.describe Game do
 
   xit 'mover para a direita até o limite e descer uma linha' do
     jogo.tiro
-    tick 36
+    tick 34
 
     tela "            ",
          "  w w w w   ",
@@ -350,7 +350,7 @@ RSpec.describe Game do
 
   xit 'move inimigos para esquerda na linha mesma linha que desceu' do
     jogo.tiro
-    tick 46
+    tick 44
 
     tela "            ",
          "w w w w     ",
