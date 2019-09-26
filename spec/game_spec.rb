@@ -341,4 +341,19 @@ RSpec.describe Game do
          "            ",
          "A           "
   end
+
+  xit 'descer inimigos uma linha' do
+    jogo.tiro
+    tick 36
+
+    tela "            ",
+         "    w w w w ",
+         "    w w w w ",
+         "    w w w w ",
+         "    w w w w ",
+         "      w w w ",
+         "            ",
+         "            ",
+         "A           "
+  end
 end
