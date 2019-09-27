@@ -18,16 +18,22 @@ class Game
     @conta_inverte_direcao = 0
     @conta_tick = 0
     @conta_tiro = 0
+    @tela_inicial = true
     limpa_tiro
   end
 
   def tela
+    return 'HOME' if tela_inicial?
     return 'GAMEOVER' if perdedor?
     return 'WINNER' if vencedor?
     galaxia_render = @galaxia.map(&:dup)
     galaxia_render.last[@posicao_nave] = 'A'
     galaxia_render[@posicao_tiro_y][@posicao_tiro_x] = '|' if renderiza_tiro?
     galaxia_render.map { |linha| desenha_linha(linha) }.join("\n")
+  end
+
+  def tela_inicial?
+    @tela_inicial
   end
 
   def renderiza_tiro?
@@ -49,6 +55,8 @@ class Game
   def esquerda() move -1 end
 
   def tiro
+    return @tela_inicial = false if tela_inicial?
+    
     easter_egg
     return if @posicao_tiro_y.positive?
 

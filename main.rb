@@ -60,6 +60,7 @@ end
 
 def renderizar_grafico tela
   clear
+  return renderiza_menu if tela == "HOME"
   return renderiza_vitoria if tela == "WINNER"
   return renderiza_derrota if tela == "GAMEOVER"
 
@@ -77,6 +78,10 @@ def renderiza_sprite codigo_sprite, x_index, y_index
   y_posicao = (y_index * SPRITE_TAMANHO)
 
   Image.new(caminho_sprite, x: x_posicao, y: y_posicao, width: SPRITE_TAMANHO, height: SPRITE_TAMANHO)
+end
+
+def renderiza_menu
+  Image.new(SPRITES[:HOME], x: 0, y: 0, width: 600, height: 500)
 end
 
 def renderiza_vitoria
