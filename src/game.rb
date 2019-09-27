@@ -14,8 +14,8 @@ class Game
     @game_over = false
     @posicao_nave = 0
     @move_monstro = false
-    @direcao_movimento_monstro = -1
-    @conta_inverte_direcao = 0
+    @direcao_movimento_monstro = 1
+    @conta_inverte_direcao = 1
     @conta_tick = 0
     @conta_tiro = 0
     limpa_tiro
