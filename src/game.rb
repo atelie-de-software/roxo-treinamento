@@ -19,6 +19,7 @@ class Game
     @conta_tick = 0
     @conta_tiro = 0
     @tela_inicial = true
+    @pontuacao = 0
     limpa_tiro
   end
 
@@ -29,6 +30,8 @@ class Game
     galaxia_render = @galaxia.map(&:dup)
     galaxia_render.last[@posicao_nave] = 'A'
     galaxia_render[@posicao_tiro_y][@posicao_tiro_x] = '|' if renderiza_tiro?
+    galaxia_render[0][0] = @pontuacao/10 if galaxia_render[0][0] != 'w' && @pontuacao > 0
+    galaxia_render[0][1] = (@pontuacao % 10) if galaxia_render[0][1] != 'w' && @pontuacao > 0
     galaxia_render.map { |linha| desenha_linha(linha) }.join("\n")
   end
 
@@ -97,6 +100,7 @@ class Game
       @galaxia[@posicao_tiro_y][@posicao_tiro_x] = '*'
       limpa_tiro
       @move_monstro = true
+      @pontuacao += 1
       return true
     end
 

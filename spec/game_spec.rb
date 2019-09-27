@@ -315,7 +315,7 @@ RSpec.describe Game do
       jogo.tiro
       tick 14
 
-      tela "  w w w w   ",
+      tela "0 w w w w   ",
            "  w w w w   ",
            "  w w w w   ",
            "  w w w w   ",
@@ -330,7 +330,7 @@ RSpec.describe Game do
       jogo.tiro
       tick 44
 
-      tela "            ",
+      tela "0 1         ",
            "  w w w w   ",
            "  w w w w   ",
            "  w w w w   ",
@@ -345,7 +345,7 @@ RSpec.describe Game do
       jogo.tiro
       tick 54
 
-      tela "            ",
+      tela "0 1         ",
            "w w w w     ",
            "w w w w     ",
            "w w w w     ",
@@ -360,7 +360,7 @@ RSpec.describe Game do
       jogo.tiro
       tick 74
 
-      tela "            ",
+      tela "0 1         ",
            "            ",
            "  w w w w   ",
            "  w w w w   ",
@@ -413,6 +413,21 @@ RSpec.describe Game do
       tick 200
 
       tela "GAMEOVER"
+    end
+
+    it 'apos primeiro movimento dos monstros, exibe quantidade de monstros mortos' do
+      jogo.tiro
+      tick 24
+
+      tela "0 1 w w w w ",
+           "    w w w w ",
+           "    w w w w ",
+           "    w w w w ",
+           "      w w w ",
+           "            ",
+           "            ",
+           "            ",
+           "A           "
     end
   end
 end
