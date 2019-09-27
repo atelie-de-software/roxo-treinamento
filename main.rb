@@ -2,7 +2,7 @@ require 'ruby2d'
 require './src/game.rb'
 
 SPRITES = {
-  'HOME': 'images/home.png'
+  'HOME': 'images/home.png',
   'w': 'images/monster.jpg',
   'A': 'images/spaceship.jpg',
   '|': 'images/tiro.jpg',
