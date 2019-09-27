@@ -82,7 +82,7 @@ def renderiza_vitoria
   Image.new(SPRITES[:WINNER], x: 0, y: 0, width: 600, height: 500)
 end
 
-def renderiza_vitoria
+def renderiza_derrota
   Image.new(SPRITES[:GAMEOVER], x: 0, y: 0, width: 600, height: 500)
 end
 
