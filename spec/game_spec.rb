@@ -341,9 +341,9 @@ RSpec.describe Game do
            "A           "
     end
 
-    xit 'move inimigos para esquerda na linha mesma linha que desceu' do
+    it 'move inimigos para esquerda na mesma linha que desceu' do
       jogo.tiro
-      tick 44
+      tick 54
 
       tela "            ",
            "w w w w     ",
@@ -356,9 +356,9 @@ RSpec.describe Game do
            "A           "
     end
 
-    xit 'move inimigos para direita na linha abaixo' do
+    it 'move inimigos para direita na linha abaixo' do
       jogo.tiro
-      tick 54
+      tick 74
 
       tela "            ",
            "            ",
