@@ -385,6 +385,21 @@ RSpec.describe Game do
            "A           "
     end
 
+    it 'comando de password para chegar no ultimo inimigo e andar para a direita' do
+      password
+      direita
+
+      tela "w           ",
+           "            ",
+           "            ",
+           "            ",
+           "            ",
+           "            ",
+           "            ",
+           "            ",
+           "  A         "
+    end
+
     it 'vitoria quando não existir inimigos' do
       password
       jogo.tiro

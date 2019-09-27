@@ -56,7 +56,7 @@ class Game
 
   def tiro
     return @tela_inicial = false if tela_inicial?
-    
+
     easter_egg
     return if @posicao_tiro_y.positive?
 
@@ -76,7 +76,7 @@ class Game
         [' ', ' ', ' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' ', ' ', ' '],
-        ['A', ' ', ' ', ' ', ' ', ' ']
+        [' ', ' ', ' ', ' ', ' ', ' ']
       ]
     end
   end
