@@ -23,7 +23,15 @@ end
 RSpec.describe Game do
   let!(:jogo) { Game.new }
 
+
+  xit 'tela de boas-vindas' do
+
+    tela "HOME"
+  end
+
   it 'tela inicial' do
+    tick
+
     tela "w w w w     ",
          "w w w w     ",
          "w w w w     ",
