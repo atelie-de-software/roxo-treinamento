@@ -326,9 +326,9 @@ RSpec.describe Game do
          "A           "
   end
 
-  xit 'mover para a direita até o limite e descer uma linha' do
+  it 'mover para a direita até o limite e desce uma linha' do
     jogo.tiro
-    tick 34
+    tick 44
 
     tela "            ",
          "  w w w w   ",
@@ -395,7 +395,7 @@ RSpec.describe Game do
 
   it 'derrota quando o inimigo alcançar a linha da nave' do
     jogo.tiro
-    tick 90
+    tick 200
 
     tela "GAMEOVER"
   end

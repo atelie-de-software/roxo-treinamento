@@ -15,7 +15,7 @@ class Game
     @posicao_nave = 0
     @move_monstro = false
     @direcao_movimento_monstro = 1
-    @conta_inverte_direcao = 1
+    @conta_inverte_direcao = 0
     @conta_tick = 0
     @conta_tiro = 0
     limpa_tiro
@@ -129,11 +129,14 @@ class Game
 
     @conta_tick = 0
 
-    if @conta_inverte_direcao % 2 == 0
+    @conta_inverte_direcao += @direcao_movimento_monstro
+
+    if @conta_inverte_direcao % 3 == 0
       @direcao_movimento_monstro *= -1
       @galaxia.unshift([' ', ' ', ' ', ' ', ' ', ' '])
       @galaxia.pop
       @game_over = true if @galaxia.last.count('w').positive?
+      return true
     end
 
     @galaxia.each_with_index do |linha, linha_index|
@@ -144,8 +147,6 @@ class Game
         @galaxia[linha_index] = (linha << linha.shift)
       end
     end
-
-    @conta_inverte_direcao += 1
   end
 
   def altera_caracter(linha, coluna, caracter)
